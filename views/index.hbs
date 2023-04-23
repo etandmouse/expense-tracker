@@ -1,1 +1,42 @@
-<h1>  Home page </h1>
+<div>
+  <div>
+    <div class="input-group">
+      <select class="form-select" name="category" id="category">
+        <option value="0"> 全部 </option>
+        <option value="1"> 家居物業 </option>
+        <option value="2"> 交通出行 </option>
+        <option value="3"> 休閒娛樂 </option>
+        <option value="4"> 餐飲食品 </option>
+        <option value="5"> 其他 </option>
+      </select>
+    </div>
+    <div>
+      <h4>總金額:</h4>
+    </div>
+    <div>
+      <h1>25260</h1>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <h2 class="record-category-icon"><i class="fa-2x fa-solid fa-house"></i></h2>
+          </div>
+          <div class="col">
+            <h4 class="mb-0">午餐</h4>
+            <h5 class="text-muted">2019/04/23</h5>
+          </div>
+          <div class="col">
+            <h4 class="mb-0 text-end">60</h4>
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-success" href="./todos/this._id/edit">edit</a>
+            <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+              <button class="btn btn-danger" type="submit">delete</button>
+            </form>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

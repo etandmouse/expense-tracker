@@ -2,10 +2,11 @@
   "name": "a3_money",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
+    "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }
