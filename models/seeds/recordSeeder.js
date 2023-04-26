@@ -34,13 +34,13 @@ const SEED_RECORD = [{
 }]
 
 db.once('open', () => {
-  Promise.all(Array.from(SEED_RECORD, async (item) => {
+  Promise.all(Array.from(SEED_RECORD, (item) => {
     let { name, date, amount, category } = item
-    await Category.findOne({ name: category })
+    return Category.findOne({ name: item.category })
       .lean()
-      .then(async (item) => {
-        await Record.create({
-          name, date, amount, categoryId: item._id
+      .then((item) => {
+        return Record.create({
+          name: name, date: date, amount:amount, categoryId: item._id
         })
           .catch(error => console.error(error))
       })
