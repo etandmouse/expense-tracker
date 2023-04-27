@@ -41,6 +41,14 @@ router.post('/filter', (req, res) => {
   }
   let totalAmount = 0
   let categoryName = ''
+
+  //find filter category name
+  Category.findById({ _id: categoryId })
+    .lean()
+    .then(category => categoryName = category.name)
+    .catch(err => console.error(err))
+
+  //list items and calculate total amount
   Record.find({ categoryId })
     .lean()
     .then(records => {
@@ -50,7 +58,6 @@ router.post('/filter', (req, res) => {
           .then((category) => {
             record.categoryIcon = category.icon
             record.date = record.date.toISOString().slice(0, 10).replaceAll("-", "/")
-            categoryName = category.name
             totalAmount += record.amount
             return record
           })
@@ -60,6 +67,7 @@ router.post('/filter', (req, res) => {
             .sort({ _id: 'asc' })
             .lean()
             .then(category => {
+              console.log(categoryName)
               res.render('index', { records, totalAmount, category, categoryId, categoryName })
             })
             .catch(err => console.error(err))
