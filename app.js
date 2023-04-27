@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+
+
 
 
 const routes = require('./routes')
@@ -11,6 +14,8 @@ app.set('view engine', 'hbs')
 const PORT = 3000
 
 require('./config/mongoose')
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(routes)
 

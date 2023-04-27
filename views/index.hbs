@@ -1,14 +1,19 @@
 <div>
   <div>
     <div class="input-group">
-      <select class="form-select" name="category" id="category">
-        <option value="0"> 全部 </option>
-        <option value="1"> 家居物業 </option>
-        <option value="2"> 交通出行 </option>
-        <option value="3"> 休閒娛樂 </option>
-        <option value="4"> 餐飲食品 </option>
-        <option value="5"> 其他 </option>
-      </select>
+      <form class="d-flex flex-row" action="/filter" method="POST">
+        <div class="category-group input-group" style="width:936px">
+          <select class="form-select" name="categoryId" id="categoryId" onchange="this.form.submit()">
+            {{#if categoryName}}
+            <option value="{{categoryId}}" hidden="hidden" selected="selected">{{categoryName}}</option>
+            {{/if}}
+            <option value="all"> 全部 </option>
+            {{#each category}}
+            <option value="{{this._id}}"> {{this.name}} </option>
+            {{/each}}
+          </select>
+        </div>
+      </form>
     </div>
     <div>
       <h4>總金額:</h4>
@@ -18,7 +23,7 @@
     </div>
     <ul class="list-group">
       {{#each records}}
-      <li class="list-group-item">        
+      <li class="list-group-item">
         <div class="row align-items-center">
           <div class="col-1 text-center">
             <h2 class="record-category-icon "><i class="fa-2x {{this.categoryIcon}} "></i></h2>
@@ -36,7 +41,7 @@
               <button class="btn btn-danger" type="submit">delete</button>
             </form>
           </div>
-        </div>        
+        </div>
       </li>
       {{/each}}
     </ul>
