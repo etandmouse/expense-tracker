@@ -14,20 +14,21 @@
       <h4>總金額:</h4>
     </div>
     <div>
-      <h1>25260</h1>
+      <h1>{{totalAmount}}</h1>
     </div>
     <ul class="list-group">
-      <li class="list-group-item">
+      {{#each records}}
+      <li class="list-group-item">        
         <div class="row align-items-center">
-          <div class="col-auto">
-            <h2 class="record-category-icon"><i class="fa-2x fa-solid fa-house"></i></h2>
+          <div class="col-1 text-center">
+            <h2 class="record-category-icon "><i class="fa-2x {{this.categoryIcon}} "></i></h2>
           </div>
           <div class="col">
-            <h4 class="mb-0">午餐</h4>
-            <h5 class="text-muted">2019/04/23</h5>
+            <h4 class="mb-0">{{ this.name }}</h4>
+            <h5 class="text-muted">{{ this.date }}</h5>
           </div>
           <div class="col">
-            <h4 class="mb-0 text-end">60</h4>
+            <h4 class="mb-0 text-end">{{this.amount}}</h4>
           </div>
           <div class="col-auto">
             <a class="btn btn-success" href="./todos/this._id/edit">edit</a>
@@ -35,8 +36,9 @@
               <button class="btn btn-danger" type="submit">delete</button>
             </form>
           </div>
-        </div>
+        </div>        
       </li>
+      {{/each}}
     </ul>
   </div>
 </div>
