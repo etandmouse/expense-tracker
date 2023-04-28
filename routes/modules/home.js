@@ -18,15 +18,13 @@ router.get('/', (req, res) => {
             totalAmount += record.amount
             return record
           })
+          .catch(err => console.error(err))
       }))
         .then(() => {
           Category.find()
             .sort({ _id: 'asc' })
             .lean()
-            .then(category => {
-              res.render('index', { records, totalAmount, category })
-
-            })
+            .then(category => res.render('index', { records, totalAmount, category }))
             .catch(err => console.error(err))
         })
         .catch(err => console.error(err))
@@ -61,15 +59,13 @@ router.post('/filter', (req, res) => {
             totalAmount += record.amount
             return record
           })
+          .catch(err => console.error(err))
       }))
         .then(() => {
           Category.find()
             .sort({ _id: 'asc' })
             .lean()
-            .then(category => {
-              console.log(categoryName)
-              res.render('index', { records, totalAmount, category, categoryId, categoryName })
-            })
+            .then(category => res.render('index', { records, totalAmount, category, categoryId, categoryName }))
             .catch(err => console.error(err))
         })
         .catch(err => console.error(err))

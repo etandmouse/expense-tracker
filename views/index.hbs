@@ -1,20 +1,16 @@
 <div>
   <div>
-    <div class="input-group">
-      <form class="d-flex flex-row" action="/filter" method="POST">
-        <div class="category-group input-group" style="width:936px">
-          <select class="form-select" name="categoryId" id="categoryId" onchange="this.form.submit()">
-            {{#if categoryName}}
-            <option value="{{categoryId}}" hidden="hidden" selected="selected">{{categoryName}}</option>
-            {{/if}}
-            <option value="all"> 全部 </option>
-            {{#each category}}
-            <option value="{{this._id}}"> {{this.name}} </option>
-            {{/each}}
-          </select>
-        </div>
-      </form>
-    </div>
+    <form class="d-flex flex-row" action="/filter" method="POST">
+      <select class="form-select" name="categoryId" id="categoryId" onchange="this.form.submit()">
+        {{#if categoryName}}
+        <option value="{{categoryId}}" hidden="hidden" selected="selected">{{categoryName}}</option>
+        {{/if}}
+        <option value="all"> 全部 </option>
+        {{#each category}}
+        <option value="{{this._id}}"> {{this.name}} </option>
+        {{/each}}
+      </select>
+    </form>
     <div>
       <h4>總金額:</h4>
     </div>
