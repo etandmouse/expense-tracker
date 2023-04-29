@@ -2,9 +2,7 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-
-
-
+const methodOverride = require('method-override')
 
 const routes = require('./routes')
 
@@ -16,6 +14,7 @@ const PORT = 3000
 require('./config/mongoose')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 app.use(routes)
 
