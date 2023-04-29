@@ -1,0 +1,63 @@
+<form action="/records/{{ record._id }}?_method=PUT" method="POST">
+  <div>
+    <div class="row">
+      <div class="col-4 text-end">
+        <h6>*必填欄位</h6>
+      </div>
+      <div class="col-5 text-center">
+        <h3>請輸入你的支出</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 text-end">
+      <label for="name" class="col-form-label">
+        名稱*：
+      </label>
+    </div>
+    <div class="col-5 text-center">
+      <input type="text" class="form-control" name="name" value="{{ record.name }}" required>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-4 text-end">
+      <label for="date">
+        日期*：
+      </label>
+    </div>
+    <div class="col-5 text-center">
+      <input type="date" class="form-control" id="date" name="date" value="{{ record.date }}" required>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-4 text-end">
+      <label for="categoryId" class="col-form-label">
+        類別*：
+      </label>
+    </div>
+    <div class="col-5 text-center">
+      <select class="form-select" name="categoryId" id="categoryId">
+        <option value="{{ categoryId }}" hidden="hidden" selected="selected">{{ categoryName }}</option>
+        {{#each category}}
+        <option value="{{ this._id }}"> {{ this.name }} </option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-4 text-end">
+      <label for="amount" class="col-form-label">
+        金額*：
+      </label>
+    </div>
+    <div class="col-5 text-center">
+      <input type="number" class="form-control" name="amount" value="{{ record.amount }}" required>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-4 text-end">
+    </div>
+    <div class="col-5 text-center">
+      <button type="submit" class="btn btn-primary w-50">送出</button>
+    </div>
+</form>

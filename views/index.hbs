@@ -12,7 +12,7 @@
       </select>
     </form>
     <div>
-      <h4  class="mt-2">總金額:</h4>
+      <h4 class="mt-2">總金額:</h4>
     </div>
     <div>
       <h1>{{totalAmount}}</h1>
@@ -32,8 +32,8 @@
             <h4 class="mb-0 text-end">{{this.amount}}</h4>
           </div>
           <div class="col-auto">
-            <a class="btn btn-success" href="./todos/this._id/edit">edit</a>
-            <form action="./todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
+            <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
               <button class="btn btn-danger" type="submit">delete</button>
             </form>
           </div>
