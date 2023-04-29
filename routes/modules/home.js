@@ -5,8 +5,9 @@ const Record = require('../../models/records')
 const Category = require('../../models/category')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   let totalAmount = 0
-  Record.find()
+  Record.find({ userId })
     .lean()
     .then(records => {
       Promise.all(records.map(record => {
@@ -33,6 +34,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/filter', (req, res) => {
+  const userId = req.user._id
   const categoryId = req.body.categoryId
   if (categoryId === 'all') {
     return res.redirect('/')
@@ -47,7 +49,7 @@ router.post('/filter', (req, res) => {
     .catch(err => console.error(err))
 
   //list items and calculate total amount
-  Record.find({ categoryId })
+  Record.find({ categoryId, userId })
     .lean()
     .then(records => {
       Promise.all(records.map(record => {
