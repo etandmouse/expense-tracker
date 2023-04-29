@@ -15,7 +15,12 @@
     <nav class="navbar navbar-dark justify-content-between" style="padding: 8px 16px;
     background-color: #e95420;">
       <a class="navbar-brand" href="/">
-        家庭記事本</a>
+        {{#if isAuthenticated}}{{#if user.name}}{{user.name}}的{{/if}}{{/if}}家庭記事本</a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-light">登出</a>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-light">登入</a>
+      {{/if}}
     </nav>
     <main>
       <div class="container mt-3">
