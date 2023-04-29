@@ -9,7 +9,11 @@ const flash = require('connect-flash')
 
 const routes = require('./routes')
 
-const PORT = 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
