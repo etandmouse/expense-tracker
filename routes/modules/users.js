@@ -9,7 +9,21 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', (req, res, next) => {
+  const { email, password } = req.body
+  const errors = []
+  if ( !email || !password ) {
+    errors.push({ message: '請填入 Email 及密碼登入。' })
+  }
+  if (errors.length) {
+    return res.render('login', {
+      errors,      
+      email,
+      password      
+    })
+  }
+  next()
+}, passport.authenticate('local', {
   successRedirect: '/',
   failureMessage: true,
   failureRedirect: '/users/login'
